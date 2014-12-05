@@ -1,3 +1,4 @@
+require "deployable/cygwin/version"
 require 'ffi'
 
 module Deployable; module Cygwin; module Path

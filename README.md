@@ -1,6 +1,6 @@
 # Deployable::Cygwin
 
-TODO: Write a gem description
+Cygwin helper functions
 
 ## Installation
 
@@ -20,11 +20,25 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Cygwin detection
+
+    require 'deployable/cygwin'
+
+    Deployable::Cygwin.CYGWIN # => true
+    Deployable::Cygwin.cygwin? # => true
+
+cygpath
+
+    require 'deployable/cygwin/path'
+
+    Deployable::Cygwin::Path.to_win('/cygdrive/c/some/path') # => "C:\\some\\path"
+
+    Deployable::Cygwin::Path.to_cyg('C:\some\path') # => "/cygdrive/c/some/path"
+
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/deployable-cygwin/fork )
+1. Fork it ( https://github.com/deployable/deployable-cygwin/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
