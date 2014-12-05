@@ -5,26 +5,35 @@ require 'tmpdir'
 describe 'Deployable::Cygwin::Path' do
 
   before :all do
-    DC = Deployable::Cygwin
-    @dir = Dir.tmpdir
+    CygPath = Deployable::Cygwin::Path
+    @dir    = Dir.tmpdir
     Dir.chdir @dir
   end
 
   it 'to_cyg tmp' do
-    expect( DC::Path.to_cyg('c:\tmp') ).to  eql('/cygdrive/c/tmp') 
+    expect( CygPath.to_cyg('c:\tmp') ).to  eql '/cygdrive/c/tmp'
   end
 
   it 'to_cyg_relative tmp' do
-    expect( DC::Path.to_cyg_relative('tmp') ).to  match(/\A#{@dir}\/tmp\Z/) 
+    # re /tmpdir/tmp
+    re_unix_path = /\A#{@dir}\/tmp\Z/
+    expect( CygPath.to_cyg_relative('tmp') ).to  match re_unix_path
   end
 
   it 'to_win tmp' do
-    expect( DC::Path.to_win('/cygdrive/c/tmp') ).to  eql('C:\tmp') 
+    expect( CygPath.to_win('/cygdrive/c/tmp') ).to  eql 'C:\tmp' 
   end
 
   it 'to_win_relative tmp' do
-    expect( DC::Path.to_win_relative('tmp') ).to  match(/\A[A-Z]:\\.+\\tmp\Z/) 
+    # re Z:\tmpdir\tmp
+    re_win_path = /\A[A-Z]:\\.+\\tmp\Z/
+    expect( CygPath.to_win_relative('tmp') ).to  match re_win_path
   end
   
+  it 'to_win_relative tmp exact' do
+    win_tmp_dir = CygPath.to_win @dir
+    expect( CygPath.to_win_relative('tmp') ).to  eql "#{win_tmp_dir}\\tmp" 
+  end
+
 end
 
