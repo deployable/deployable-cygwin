@@ -7,9 +7,9 @@ Gem::Specification.new do |spec|
   spec.name          = "deployable-cygwin"
   spec.version       = Deployable::Cygwin::VERSION
   spec.authors       = ["Matt Hoyle"]
-  spec.email         = ["matt@deployable.co"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.email         = ["code@deployable.co"]
+  spec.summary       = %q{Cygwin helpers for Ruby}
+  spec.description   = %q{Contains various cygwin helpers for ruby}
   spec.homepage      = ""
   spec.license       = "MIT"
 

@@ -1,6 +1,6 @@
 require 'ffi'
 
-module Cygwin; module Path
+module Deployable; module Cygwin; module Path
 
   extend FFI::Library
 
@@ -57,4 +57,4 @@ module Cygwin; module Path
     conv_call POSIX_TO_WIN_A+RELATIVE, path
   end
 
-end; end
+end; end; end
